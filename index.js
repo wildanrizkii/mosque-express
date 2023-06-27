@@ -20,8 +20,6 @@ app.get("/", async (req, res) => {
     var tanggalSekarang = today.getDate();
     var bulanSekarang = today.getMonth() + 1;
     var tahunSekarang = today.getFullYear();
-    
-    console.log(tanggalSekarang)
 
     fetch('https://api.myquran.com/v1/sholat/jadwal/1219/' + tahunSekarang + '/' + bulanSekarang + '/' + tanggalSekarang)
         .then(function(response) {
@@ -35,37 +33,31 @@ app.get("/", async (req, res) => {
             let waktuJamSubuh = subuh.split(':')[0] * 60
             let waktuMenitSubuh = subuh.split(':')[1]
             let waktuSubuh = parseInt(waktuJamSubuh) + parseInt(waktuMenitSubuh)
-            console.log("Subuh : " + waktuSubuh)
 
             // Dzuhur
             let dzuhur = jadwalSholat.dzuhur
             let waktuJamDzuhur = dzuhur.split(':')[0] * 60
             let waktuMenitDzuhur = dzuhur.split(':')[1]
             let waktuDzuhur = parseInt(waktuJamDzuhur) + parseInt(waktuMenitDzuhur)
-            console.log("Dzuhur : " + waktuDzuhur)
 
             // Ashar
             let ashar = jadwalSholat.ashar
             let waktuJamAshar = ashar.split(':')[0] * 60
             let waktuMenitAshar = ashar.split(':')[1]
             let waktuAshar = parseInt(waktuJamAshar) + parseInt(waktuMenitAshar)
-            console.log("Ashar : " + waktuAshar)
 
             // Maghrib
             let maghrib = jadwalSholat.maghrib
             let waktuJamMaghrib = maghrib.split(':')[0] * 60
             let waktuMenitMaghrib = maghrib.split(':')[1]
             let waktuMaghrib = parseInt(waktuJamMaghrib) + parseInt(waktuMenitMaghrib)
-            console.log("Maghrib : " + waktuMaghrib)
 
             // Isya
             let isya = jadwalSholat.isya
             let waktuJamIsya = isya.split(':')[0] * 60
             let waktuMenitIsya = isya.split(':')[1]
             let waktuIsya = parseInt(waktuJamIsya) + parseInt(waktuMenitIsya)
-            console.log("Isya : " + waktuIsya)
 
-            console.log(data);
             res.render('index', {jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya});
         });
     
