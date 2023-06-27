@@ -1,6 +1,5 @@
 import express from "express";
 const router = express.Router();
-const app = express();
 
 router.get("/", async (req, res) => {
     try{
@@ -14,4 +13,4 @@ router.get("/", async (req, res) => {
     }
 })
 
-export default router
+export default router;
