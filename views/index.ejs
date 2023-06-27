@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!--=============== MAIN JS ===============-->
+        <script src="js/main.js" defer></script>
+
+        <title>Masjid Al-Hikmah</title>
+    </head>
+    <body>
+        <!--==================== HEADER ====================-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">
+                    <img src="img/logo-alhikmah.png" alt="logo image">
+                    Al-Hikmah
+                </a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link active-link">Home</a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#about" class="nav__link">Jadwal Sholat</a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#popular" class="nav__link">Popular</a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#recently" class="nav__link">Recently</a>
+                        </li>
+                    </ul>
+
+                    <!-- Close button -->
+                    <div class="nav__close" id="nav-close">
+                        <i class="ri-close-line"></i>
+                    </div>
+
+                    <img src="img/leaf-branch-4.png" alt="nav image" class="nav__img-1">
+                    <img src="img/leaf-branch-3.png" alt="nav image" class="nav__img-2">
+                </div>
+
+                <div class="nav__buttons">
+                    <!-- Theme change button -->
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+
+                    <!-- Toggle button -->
+                    <div class="nav__toggle" id="nav-toggle">
+                        <i class="ri-apps-2-line"></i>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!--==================== MAIN ====================-->
+        <main class="main">
+            <!--==================== HOME ====================-->
+            <section class="home section" id="home">
+                <div class="home__container container grid">
+                    <img src="img/masjid-img.png" alt="home image" class="home__img">
+                    <div class="home__data">
+                        <h1 class="home__title">
+                            Nikmati Ketenangan Beragama dan Pertumbuhan Spiritual di Masjid Kami
+                        </h1>
+
+                        <p class="home__description">
+                            Shalat adalah waktu pertemuan dengan Allah dan kenaikan orang beriman
+                        </p>
+
+                        <a href="https://www.google.com/maps/dir//4J9M%2BGJP,+Jl.+Cijotang+Mandiri+1,+Cibeunying,+Kec.+Cimenyan,+Kabupaten+Bandung,+Jawa+Barat+40191/@-6.8811575,107.5640403,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x2e68e7e55179dbc5:0x7438d446eb09f24d!2m2!1d107.6341114!2d-6.8811791?entry=ttu" target="_blank" class="button">
+                            Kunjungi Masjid <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <img src="img/leaf-branch-2.png" alt="home image" class="home__leaf-1">
+                <img src="img/leaf-branch-4.png" alt="home image" class="home__leaf-2">
+            </section>
+
+            <!--==================== ABOUT ====================-->
+            <section class="about section" id="about">
+                <div class="about__container container grid">
+                    <div class="about__data">
+                        <span class="section__subtitle">Jadwal Sholat Selanjutnya</span>
+                        <h2 class="section__title about__title"> 
+                            <% if (waktuSekarang > waktuIsya && waktuSekarang < waktuSubuh) { %>
+                                Sholat Subuh
+                            <% } else if (waktuSekarang > waktuSubuh && waktuSekarang < waktuDzuhur) { %>
+                                Sholat Dzuhur
+                            <% } else if (waktuSekarang > waktuDzuhur && waktuSekarang < waktuAshar) { %>
+                                Sholat Ashar
+                            <% } else if (waktuSekarang > waktuAshar && waktuSekarang < waktuMaghrib) { %>
+                                Sholat Maghrib
+                            <% } else if (waktuSekarang > waktuMaghrib && waktuSekarang < waktuIsya) { %>
+                                Sholat Isya
+                            <% } %>
+                        </h2>
+
+                        <p class="about__description">
+                            <% if (waktuSekarang > waktuIsya && waktuSekarang < waktuSubuh) { %>
+                                <%= jadwalSholat.subuh %> WIB
+                            <% } else if (waktuSekarang > waktuSubuh && waktuSekarang < waktuDzuhur) { %>
+                                <%= jadwalSholat.dzuhur %> WIB
+                            <% } else if (waktuSekarang > waktuDzuhur && waktuSekarang < waktuAshar) { %>
+                                <%= jadwalSholat.ashar %> WIB
+                            <% } else if (waktuSekarang > waktuAshar && waktuSekarang < waktuMaghrib) { %>
+                                <%= jadwalSholat.maghrib %> WIB
+                            <% } else if (waktuSekarang > waktuMaghrib && waktuSekarang < waktuIsya) { %>
+                                <%= jadwalSholat.isya %> WIB
+                            <% } %>
+                        </p>
+                    </div>
+
+                    <div class="jadwal__sholat">
+                        <span class="sholat__container grid">
+                            <div class="time">
+                                <p>Shalat Subuh</p>
+                                <div class="jam">
+                                    <%= jadwalSholat.subuh %> WIB
+                                </div>
+                            </div>
+                            <div class="time">
+                                <p>Syuruq / Terbit </p>  
+                                <div class="jam">
+                                    <%= jadwalSholat.terbit %> WIB
+                                </div>
+                            </div>
+                            <div class="time">
+                                <p>Shalat Dzuhur  </p> 
+                                <div class="jam">
+                                    <%= jadwalSholat.dzuhur %> WIB
+                                </div> 
+                            </div>
+                            <div class="time">
+                                <p>Shalat Ashar</p> 
+                                <div class="jam">
+                                    <%= jadwalSholat.ashar %> WIB
+                                </div> 
+                            </div>
+                            <div class="time">
+                                <p>Shalat Maghrib</p> 
+                                <div class="jam">
+                                    <%= jadwalSholat.maghrib %> WIB
+                                </div>  
+                            </div>
+                            <div class="time">
+                                <p>Shalat Isya</p>   
+                                <div class="jam">
+                                    <%= jadwalSholat.isya %> WIB
+                                </div>
+                            </div>
+                            
+                        </span>
+                    </div>
+                    <!-- <img src="assets/img/about-sushi.png" alt="about image" class="about__img"> -->
+                </div>
+
+                <img src="img/leaf-branch-1.png" alt="about image" class="about__leaf">
+            </section>
+
+            <!--==================== POPULAR ====================-->
+            <section class="popular section" id="popular">
+                <span class="section__subtitle">Al-Hikmah</span>
+                <h2 class="section__title">Extend Your Hand of Charity</h2>
+
+                <div class="popular__container grid">
+                    <article class="popular__card">
+                        <img src="img/popular-onigiri.png" alt="popular image" class="popular__img">
+
+                        <h3 class="popular__name">Onigiri</h3>
+                        <span class="popular__description">Japanese Dish</span>
+
+                        <a href="#" class="popular__price">Donate for Mosque </a>
+                    </article>
+
+                    <article class="popular__card">
+                        <img src="img/popular-spring-rols.png" alt="popular image" class="popular__img">
+
+                        <h3 class="popular__name">Spring Rolls</h3>
+                        <span class="popular__description">Japanese Dish</span>
+
+                        <a href="#" class="popular__price">Donate for Zakat </a>
+                    </article>
+
+                    <article class="popular__card">
+                        <img src="img/popular-sushi-rolls.png" alt="popular image" class="popular__img">
+
+                        <h3 class="popular__name">Sushi Rolls</h3>
+                        <span class="popular__description">Japanese Dish</span>
+
+                        <a href="#" class="popular__price">Donate for Sadaqah </a>
+                    </article>
+                </div>
+            </section>
+
+            <!--==================== RECENTLY ====================-->
+            <section class="recently section" id="recently">
+                <div class="recently__container container grid">
+                    <div class="recently__data">
+                        <span class="section__subtitle">Recently Added</span>
+                        <h2 class="section__title">
+                            Sushi Samurai <br>
+                            Salmon Cheese
+                        </h2>
+
+                        <p class="recently__description">
+                            Take a look at what's new. And do not deprive
+                            yourself of a good meal, enjoy and be happy.
+                        </p>
+
+                        <a href="#" class="button">
+                            Order Now <i class="ri-arrow-right-line"></i>
+                        </a>
+
+                        <img src="img/spinach-leaf.png" alt="recently image" class="recently__data-img">
+                    </div>
+
+                    <img src="img/recently-salmon-sushi.png" alt="recently image" class="recently__img">
+                </div>
+
+                <img src="img/leaf-branch-2.png" alt="recently image" class="recently__leaf-1">
+                <img src="img/leaf-branch-3.png" alt="recently image" class="recently__leaf-2">
+            </section>
+
+            <!--==================== NEWSLETTER ====================-->
+            <section class="newsletter section">
+                <div class="newsletter__container container">
+                    <div class="newsletter__content grid">
+                        <img src="img/newsletter-sushi.png" alt="newsletter image" class="newsletter__img">
+
+                        <div class="newsletter__data">
+                            <span class="section__subtitle">Newsletter</span>
+                            <h2 class="section__title">
+                                Subscribe For <br>
+                                Offer Updates
+                            </h2>
+
+                            <form action="" class="newsletter__form">
+                                <input type="email" placeholder="Enter email" class="newsletter__input">
+
+                                <button class="button newsletter__button">
+                                    Subscribe <i class="ri-send-plane-line"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <img src="img/spinach-leaf.png" alt="newsletter image" class="newsletter__spinach">
+                </div>
+            </section>
+        </main>
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer">
+            <div class="footer__container container grid">
+                <div>
+                    <a href="#" class="footer__logo">
+                        <img src="img/logo-alhikmah.png" alt="logo image">
+                        Al-Hikmah
+                    </a>
+
+                    <p class="footer__description">
+                        Food for the body is not <br>
+                        enough. There must be food <br>
+                        for the soul.
+                    </p>
+                </div>
+
+                <div class="footer__content">
+                    <div>
+                        <h3 class="footer__title">Main Menu</h3>
+
+                        <ul class="footer__links">
+                            <li>
+                                <a href="#" class="footer__link">About</a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="footer__link">Menus</a>
+                            </li>
+                            
+                            <li>
+                                <a href="#" class="footer__link">Offer</a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="footer__link">Events</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="footer__title">Information</h3>
+
+                        <ul class="footer__links">
+                            <li>
+                                <a href="#" class="footer__link">Contact</a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="footer__link">Order & Returns</a>
+                            </li>
+                            
+                            <li>
+                                <a href="#" class="footer__link">Videos</a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="footer__link">Reservation</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="footer__title">Address</h3>
+
+                        <ul class="footer__links">
+                            <li class="footer__information">
+                                Jalan Cijotang RT 01 RW 03 <br>
+                                Kel. Cibeunying Kec. Cimenyan <br>
+                                Kabupaten Bandung, 40191
+                            </li>
+
+                            <li class="footer__information">
+                                Indonesia
+                            </li>
+                            
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="footer__title">Social Media</h3>
+
+                        <ul class="footer__social">
+                            <a href="https://www.facebook.com" target="_blank" class="footer__social-link">
+                                <i class="ri-facebook-circle-fill"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com" target="_blank" class="footer__social-link">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+
+                            <a href="https://www.twitter.com" target="_blank" class="footer__social-link">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+
+                <img src="img/spring-onion.png" alt="footer image" class="footer__onion">
+                <img src="img/spinach-leaf.png" alt="footer image" class="footer__spinach">
+                <img src="img/leaf-branch-4.png" alt="footer image" class="footer__leaf">
+            </div>
+
+            <div class="footer__info container">
+                <div class="footer__card">
+                    <img src="img/footer-card-1.png" alt="footer image">
+                    <img src="img/footer-card-2.png" alt="footer image">
+                    <img src="img/footer-card-3.png" alt="footer image">
+                    <img src="img/footer-card-4.png" alt="footer image">
+                </div>
+
+                <span class="footer__copy">
+                    &#169; Copyright 2023 Al-Hikmah. All rights reserved
+                </span>
+            </div>
+        </footer>
+
+        <!--========== SCROLL UP ==========-->
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class="ri-arrow-up-line"></i>
+        </a>
+
+        <!--=============== SCROLLREVEAL ===============-->
+        <script src="js/scrollreveal.min.js"></script>
+
+        
+    </body>
+</html>
