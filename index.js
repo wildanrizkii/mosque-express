@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/product", product);
 
-app.get("/home", async (req, res) => {
+app.get("/", async (req, res) => {
     const today = new Date();
     var waktuSekarang = (parseInt(today.getHours())*60) + parseInt(today.getMinutes())
     var tanggalSekarang = today.getDate();
@@ -58,7 +58,7 @@ app.get("/home", async (req, res) => {
             let waktuMenitIsya = isya.split(':')[1]
             let waktuIsya = parseInt(waktuJamIsya) + parseInt(waktuMenitIsya)
 
-            res.render('home', {jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya});
+            res.status(200).render('home', {jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya});
         });
     
   });
