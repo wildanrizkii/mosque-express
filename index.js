@@ -1,6 +1,6 @@
-const express = require('express');
-const product = require('./api/product');
+import express from "express";
 import path from "path";
+import product from "./api/product.js";
 
 const app = express();
 
