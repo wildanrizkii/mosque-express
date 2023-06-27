@@ -58,7 +58,7 @@ app.get("/", async (req, res) => {
             let waktuMenitIsya = isya.split(':')[1]
             let waktuIsya = parseInt(waktuJamIsya) + parseInt(waktuMenitIsya)
 
-            res.render('index', {jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya});
+            res.render('home', {jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya});
         });
     
   });
