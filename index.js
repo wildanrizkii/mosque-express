@@ -20,6 +20,7 @@ app.get("/", async (req, res) => {
     var tanggalSekarang = today.getDate();
     var bulanSekarang = today.getMonth() + 1;
     var tahunSekarang = today.getFullYear();
+    res.setHeader('Content-Type', 'text/html');
 
     fetch('https://api.myquran.com/v1/sholat/jadwal/1219/' + tahunSekarang + '/' + bulanSekarang + '/' + tanggalSekarang)
         .then(function(response) {
@@ -60,7 +61,6 @@ app.get("/", async (req, res) => {
 
             res.status(200).render('home', {jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya});
         });
-    
   });
 
 
