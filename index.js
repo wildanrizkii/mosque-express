@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import product from "./api/product.js";
+import { product } from "./api/product.js";
 
 const app = express();
 
