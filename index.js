@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/product", product);
 
-app.get("/", async (req, res) => {
+app.get("/home", async (req, res) => {
     const today = new Date();
     var waktuSekarang = (parseInt(today.getHours())*60) + parseInt(today.getMinutes())
     var tanggalSekarang = today.getDate();
