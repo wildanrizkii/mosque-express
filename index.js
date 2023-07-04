@@ -22,7 +22,10 @@ app.get("/", async (req, res) => {
     var tahunSekarang = today.getFullYear();
     res.setHeader('Content-Type', 'text/html');
 
-    fetch('https://api.myquran.com/v1/sholat/jadwal/1219/' + tahunSekarang + '/' + bulanSekarang + '/' + tanggalSekarang)
+    let URL = 'https://api.myquran.com/v1/sholat/jadwal/1219/' + tahunSekarang + '/' + bulanSekarang + '/' + tanggalSekarang
+    // console.log(URL)
+
+    fetch(URL)
         .then(function(response) {
             return response.json();
         })
