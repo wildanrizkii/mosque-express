@@ -16,7 +16,7 @@ app.use("/api/product", product);
 
 app.get("/", async (req, res) => {
     const today = new Date();
-    var waktuSekarang = (parseInt(today.getHours())*60) + parseInt(today.getMinutes())
+    var waktuSekarang = (parseInt(today.getHours())*60) + parseInt(today.getMinutes() + 420)
     var tanggalSekarang = today.getDate();
     var bulanSekarang = today.getMonth() + 1;
     var tahunSekarang = today.getFullYear();
@@ -24,7 +24,7 @@ app.get("/", async (req, res) => {
     var jamSekarang = today.getHours();
 
     let URL = 'https://api.myquran.com/v1/sholat/jadwal/1219/' + tahunSekarang + '/' + bulanSekarang + '/' + tanggalSekarang
-    // console.log(today.getHours())
+    console.log(waktuSekarang)
 
     fetch(URL)
         .then(function(response) {
