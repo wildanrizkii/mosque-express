@@ -66,6 +66,7 @@ body {
   background-color: var(--body-color);
   color: var(--text-color);
   transition: background 0.4s; /* for dark mode animation */
+  min-width: 340px;
 }
 
 h1, h2, h3 {
@@ -819,13 +820,18 @@ body.dark-theme{
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
-@media screen and (max-width: 340px){
+@media screen and (max-width: 592px){
   .container{
     margin-inline: 1rem;
   }
 
   .section{
     padding-block: 4rem;
+  }
+
+  .home__img{
+    max-width: 360px;
+    padding: 0 1.75rem 0 2.75rem;
   }
 
   .home__title{
@@ -838,8 +844,31 @@ body.dark-theme{
     bottom: 0;
   }
 
+  .sholat__container{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(1, 250px);
+  }
+
+  .jadwal__sholat{
+    justify-content: center;
+  }
+
   .about__leaf{
     bottom: 8rem;
+  }
+
+  .about__container{
+    flex-direction: column;
+    justify-content: center;
+    grid-template-columns: repeat(1, 250px);
+  }
+
+  .about__container{
+    flex-direction: column;
+    justify-content: center;
+    grid-template-columns: repeat(1, 250px);
   }
 
   .recently__data-img{
