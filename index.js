@@ -7,13 +7,13 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-const staticPath = path.resolve("public");
 app.set("view engine", "ejs");
+const staticPath = path.resolve("public");
 app.set('views', path.join(staticPath, '../views'))
 app.use(express.static(staticPath));
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/product", product);
+app.use("/api/", product);
 
 app.get("/", async (req, res) => {
     const today = new Date();
