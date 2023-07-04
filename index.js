@@ -20,7 +20,6 @@ app.get("/", async (req, res) => {
     var tanggalSekarang = today.getDate();
     var bulanSekarang = today.getMonth() + 1;
     var tahunSekarang = today.getFullYear();
-    res.setHeader('Content-Type', 'text/html');
 
     let URL = 'https://api.myquran.com/v1/sholat/jadwal/1219/' + tahunSekarang + '/' + bulanSekarang + '/' + tanggalSekarang
     // console.log(waktuSekarang)
