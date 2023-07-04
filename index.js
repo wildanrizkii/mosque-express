@@ -7,7 +7,6 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-
 const staticPath = path.resolve("public");
 app.set("view engine", "ejs");
 app.set('views', path.join(staticPath, '../views'))
