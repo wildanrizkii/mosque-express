@@ -13,7 +13,7 @@ app.set('views', path.join(staticPath, '../views'))
 app.use(express.static(staticPath));
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/", product);
+app.use("/api/product", product);
 
 app.get("/", async (req, res) => {
     const today = new Date();
