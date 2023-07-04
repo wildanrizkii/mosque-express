@@ -8,7 +8,8 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.set("view engine", "ejs");
-const staticPath = path.resolve("views");
+app.set('views', '/views');
+const staticPath = path.resolve("public");
 app.use(express.static(staticPath));
 app.use(express.urlencoded({ extended: true }));
 
