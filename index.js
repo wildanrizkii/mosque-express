@@ -16,7 +16,7 @@ app.use("/api/product", product);
 
 app.get("/", async (req, res) => {
     const today = new Date();
-    var waktuSekarang = (parseInt(today.getHours())*60) + parseInt(today.getMinutes()) - 60
+    var waktuSekarang = (parseInt(today.getHours())*60) + parseInt(today.getMinutes()) + 420
     var tanggalSekarang = today.getDate();
     var bulanSekarang = today.getMonth() + 1;
     var tahunSekarang = today.getFullYear();
