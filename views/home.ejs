@@ -86,7 +86,7 @@
                     <div class="jadwal__data">
                         <span class="section__subtitle">Jadwal Sholat Selanjutnya</span>
                         <h2 class="section__title jadwal__title"> 
-                            <% if (waktuSekarang > waktuIsya) { %>
+                            <% if (waktuSekarang > waktuIsya || waktuSekarang < waktuSubuh) { %>
                                 Sholat Subuh
                             <% } else if (waktuSekarang > waktuSubuh && waktuSekarang < waktuDzuhur) { %>
                                 Sholat Dzuhur
@@ -100,7 +100,7 @@
                         </h2>
 
                         <p class="jadwal__description">
-                            <% if (waktuSekarang > waktuIsya) { %>
+                            <% if (waktuSekarang > waktuIsya || waktuSekarang < waktuSubuh) { %>
                                 <%= jadwalSholat.subuh %> WIB
                             <% } else if (waktuSekarang > waktuSubuh && waktuSekarang < waktuDzuhur) { %>
                                 <%= jadwalSholat.dzuhur %> WIB
