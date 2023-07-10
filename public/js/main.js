@@ -105,6 +105,36 @@ const sr = ScrollReveal({
 
 sr.reveal(`.home__img, .newsletter__container, .footer__logo, .footer__description, .footer__content, .footer__info`)
 sr.reveal(`.home__data`, {origin: 'bottom'})
-sr.reveal(`.about__data, .recently__data`, {origin: 'left'})
+sr.reveal(`.jadwal__data, .recently__data`, {origin: 'left'})
 sr.reveal(`.jadwal__sholat, .recently__img`, {origin: 'right'})
 sr.reveal(`.popular__card`, {interval: 100})
+
+/*=============== OPEN MODAL / POPUP ===============*/
+const license = document.querySelectorAll(".license");
+const closeBtn = document.querySelectorAll(".close");
+
+function openModal(target) {
+    document.getElementById(target).style.display = "flex";
+    document.querySelector('body').classList.add('.overlay');
+}
+
+function closeModal(target) {
+    document.getElementById(target).style.display = "none";
+}
+
+
+license.forEach(function(button) {
+    button.addEventListener("click", function() {
+        var target = button.getAttribute("data-target");
+        openModal(target);
+        console.log(button)
+    });
+});
+
+
+closeBtn.forEach(function(button) {
+    button.addEventListener("click", function() {
+        var target = button.getAttribute("data-target");
+        closeModal(target);
+    });
+});

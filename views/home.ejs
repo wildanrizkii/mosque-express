@@ -3,23 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!--=============== FAVICON ===============-->
-        <link rel="shortcut icon" href="img/logo-link.png" type="image/x-icon">
-
-        <!--=============== REMIXICONS ===============-->
+        <link rel="shortcut icon" href="img/logo-mosque.png" type="image/x-icon">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
-        <!--=============== CSS ===============-->
         <link rel="stylesheet" href="css/styles.css">
-
-        <!--=============== MAIN JS ===============-->
         <script src="js/main.js" defer></script>
-
         <title>Masjid Al-Hikmah</title>
     </head>
-    <body oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;">
-        <!--==================== HEADER ====================-->
+    <body>
         <header class="header" id="header">
             <nav class="nav container">
                 <a href="/" class="nav__logo">
@@ -34,7 +24,7 @@
                         </li>
 
                         <li class="nav__item">
-                            <a href="#about" class="nav__link">Jadwal Sholat</a>
+                            <a href="#jadwal" class="nav__link">Jadwal Sholat</a>
                         </li>
 
                         <li class="nav__item">
@@ -46,7 +36,7 @@
                         </li>
                     </ul>
 
-                    <!-- Close button -->
+                    <!-- Nav Close -->
                     <div class="nav__close" id="nav-close">
                         <i class="ri-close-line"></i>
                     </div>
@@ -56,7 +46,7 @@
                 </div>
 
                 <div class="nav__buttons">
-                    <!-- Theme change button -->
+                    <!-- Theme -->
                     <i class="ri-moon-line change-theme" id="theme-button"></i>
 
                     <!-- Toggle button -->
@@ -67,9 +57,7 @@
             </nav>
         </header>
 
-        <!--==================== MAIN ====================-->
         <main class="main">
-            <!--==================== HOME ====================-->
             <section class="home section" id="home">
                 <div class="home__container container grid">
                     <img src="img/masjid-img.png" alt="home image" class="home__img">
@@ -92,12 +80,12 @@
                 <img src="img/leaf-branch-4.png" alt="home image" class="home__leaf-2">
             </section>
 
-            <!--==================== ABOUT ====================-->
-            <section class="about section" id="about">
-                <div class="about__container container grid">
-                    <div class="about__data">
+            <!--==================== Jadwal Sholat ====================-->
+            <section class="jadwal section" id="jadwal">
+                <div class="jadwal__container container grid">
+                    <div class="jadwal__data">
                         <span class="section__subtitle">Jadwal Sholat Selanjutnya</span>
-                        <h2 class="section__title about__title"> 
+                        <h2 class="section__title jadwal__title"> 
                             <% if (waktuSekarang > waktuIsya) { %>
                                 Sholat Subuh
                             <% } else if (waktuSekarang > waktuSubuh && waktuSekarang < waktuDzuhur) { %>
@@ -111,7 +99,7 @@
                             <% } %>
                         </h2>
 
-                        <p class="about__description">
+                        <p class="jadwal__description">
                             <% if (waktuSekarang > waktuIsya) { %>
                                 <%= jadwalSholat.subuh %> WIB
                             <% } else if (waktuSekarang > waktuSubuh && waktuSekarang < waktuDzuhur) { %>
@@ -164,13 +152,11 @@
                                     <%= jadwalSholat.isya %> WIB
                                 </div>
                             </div>
-                            
                         </span>
                     </div>
-                    <!-- <img src="assets/img/about-sushi.png" alt="about image" class="about__img"> -->
                 </div>
 
-                <img src="img/leaf-branch-1.png" alt="about image" class="about__leaf">
+                <img src="img/leaf-branch-1.png" alt="jadwal image" class="jadwal__leaf">
             </section>
 
             <!--==================== POPULAR ====================-->
@@ -321,7 +307,7 @@
                             </li>
 
                             <li>
-                                <a href="#" class="footer__link">Reservation</a>
+                                <a class="footer__link license" data-target="#licenses">Licenses</a>
                             </li>
                         </ul>
                     </div>
@@ -381,6 +367,40 @@
             </div>
         </footer>
 
+        <div class="overlay" id="#licenses">
+            <div class="popupLicenses">
+                <button type="button" class="btn-batal close" data-target="#licenses" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                <div>
+                    <div class="modal-header">
+                        <h2>Lisensi</h2>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="nama__img">
+                        Logo Website
+                        <div class="licenses__link">
+                            <a href="https://www.flaticon.com/free-icons/eid-mubarak" title="eid mubarak icons" target="_blank">Eid mubarak icons created by BZZRINCANTATION - Flaticon</a>
+                        </div>
+                    </div>
+                    <div class="nama__img">
+                        Gambar Masjid
+                        <div class="licenses__link">
+                            <a href="https://pngtree.com/freepng/eid-mubarak-islamic-masjid-mosque_8998771.html?sol=downref&id=bef" title="islamic PNG Designed By sdesigns" target="_blank">islamic PNG Designed By sdesigns</a>
+                        </div>
+                    </div>
+                    <div class="nama__img">
+                        Logo Al-Hikmah
+                        <div class="licenses__link">
+                            <a href="https://pngtree.com/freepng/mosque-icon-logo-vector-simple-mosque-design_9005489.html?sol=downref&id=bef" title="imosque PNG Designed By HENDRA123" target="_blank">imosque PNG Designed By HENDRA123</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!--========== SCROLL UP ==========-->
         <a href="#" class="scrollup" id="scroll-up">
             <i class="ri-arrow-up-line"></i>
@@ -389,6 +409,5 @@
         <!--=============== SCROLLREVEAL ===============-->
         <script src="js/scrollreveal.min.js"></script>
 
-        
     </body>
 </html>
