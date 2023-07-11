@@ -15,55 +15,71 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/product", product);
 
 app.get("/", async (req, res) => {
-    const today = new Date();
-    var waktuSekarang = (parseInt(today.getHours())*60) + parseInt(today.getMinutes()) + 420
-    var tanggalSekarang = today.getDate();
-    var bulanSekarang = today.getMonth() + 1;
-    var tahunSekarang = today.getFullYear();
 
-    let URL = 'https://api.myquran.com/v1/sholat/jadwal/1219/' + tahunSekarang + '/' + bulanSekarang + '/' + tanggalSekarang
-    console.log(waktuSekarang)
+    const kota = 'Bandung';
+    const APIUrl = 'https://api.api-ninjas.com/v1/worldtime?city=' + kota;
+    const apiKey = 'NoWN4Uv5h9SaZGYWHcbJbg==1bAK2bvlRKJ6HAq8';
+    let waktuSekarang, tahun, bulan, tanggal;
+    
 
-    fetch(URL)
-        .then(function(response) {
-            return response.json();
+    fetch(APIUrl, {
+        method: 'GET',
+        headers: {
+          'X-Api-Key': apiKey
+        },
+        contentType: 'application/json',
+        json: true
+    })
+    .then(function(output) {
+        return output.json();
+    })
+    .then(function (time) {
+        waktuSekarang = parseInt(time.hour * 60) + parseInt(time.minute)
+        tahun = time.year
+        bulan = time.month
+        tanggal = time.day
+        let URL = 'https://api.myquran.com/v1/sholat/jadwal/1219/' + tahun + '/' + bulan + '/' + tanggal
+
+        fetch(URL)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                let jadwalSholat = data.data.jadwal
+
+                // Subuh
+                let subuh = jadwalSholat.subuh
+                let waktuJamSubuh = subuh.split(':')[0] * 60
+                let waktuMenitSubuh = subuh.split(':')[1]
+                let waktuSubuh = parseInt(waktuJamSubuh) + parseInt(waktuMenitSubuh)
+
+                // Dzuhur
+                let dzuhur = jadwalSholat.dzuhur
+                let waktuJamDzuhur = dzuhur.split(':')[0] * 60
+                let waktuMenitDzuhur = dzuhur.split(':')[1]
+                let waktuDzuhur = parseInt(waktuJamDzuhur) + parseInt(waktuMenitDzuhur)
+
+                // Ashar
+                let ashar = jadwalSholat.ashar
+                let waktuJamAshar = ashar.split(':')[0] * 60
+                let waktuMenitAshar = ashar.split(':')[1]
+                let waktuAshar = parseInt(waktuJamAshar) + parseInt(waktuMenitAshar)
+
+                // Maghrib
+                let maghrib = jadwalSholat.maghrib
+                let waktuJamMaghrib = maghrib.split(':')[0] * 60
+                let waktuMenitMaghrib = maghrib.split(':')[1]
+                let waktuMaghrib = parseInt(waktuJamMaghrib) + parseInt(waktuMenitMaghrib)
+
+                // Isya
+                let isya = jadwalSholat.isya
+                let waktuJamIsya = isya.split(':')[0] * 60
+                let waktuMenitIsya = isya.split(':')[1]
+                let waktuIsya = parseInt(waktuJamIsya) + parseInt(waktuMenitIsya)
+
+                res.status(200).render('home', { jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya });
+            });
         })
-        .then(function(data) {
-            let jadwalSholat = data.data.jadwal
-
-            // Subuh
-            let subuh = jadwalSholat.subuh
-            let waktuJamSubuh = subuh.split(':')[0] * 60
-            let waktuMenitSubuh = subuh.split(':')[1]
-            let waktuSubuh = parseInt(waktuJamSubuh) + parseInt(waktuMenitSubuh)
-
-            // Dzuhur
-            let dzuhur = jadwalSholat.dzuhur
-            let waktuJamDzuhur = dzuhur.split(':')[0] * 60
-            let waktuMenitDzuhur = dzuhur.split(':')[1]
-            let waktuDzuhur = parseInt(waktuJamDzuhur) + parseInt(waktuMenitDzuhur)
-
-            // Ashar
-            let ashar = jadwalSholat.ashar
-            let waktuJamAshar = ashar.split(':')[0] * 60
-            let waktuMenitAshar = ashar.split(':')[1]
-            let waktuAshar = parseInt(waktuJamAshar) + parseInt(waktuMenitAshar)
-
-            // Maghrib
-            let maghrib = jadwalSholat.maghrib
-            let waktuJamMaghrib = maghrib.split(':')[0] * 60
-            let waktuMenitMaghrib = maghrib.split(':')[1]
-            let waktuMaghrib = parseInt(waktuJamMaghrib) + parseInt(waktuMenitMaghrib)
-
-            // Isya
-            let isya = jadwalSholat.isya
-            let waktuJamIsya = isya.split(':')[0] * 60
-            let waktuMenitIsya = isya.split(':')[1]
-            let waktuIsya = parseInt(waktuJamIsya) + parseInt(waktuMenitIsya)
-
-            res.status(200).render('home', {jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya});
-        });
   });
-
 
 app.listen(PORT, () => console.log(`Ready!`));
