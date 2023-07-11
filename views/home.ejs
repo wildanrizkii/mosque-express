@@ -32,7 +32,7 @@
                         </li>
 
                         <li class="nav__item">
-                            <a href="#recently" class="nav__link">Recently</a>
+                            <a href="#recently" class="nav__link">Kegiatan</a>
                         </li>
                     </ul>
 
@@ -198,11 +198,11 @@
             <section class="recently section" id="recently">
                 <div class="recently__container container grid">
                     <div class="recently__data">
-                        <span class="section__subtitle">Recently Added</span>
-                        <h2 class="section__title">
-                            Sushi Samurai <br>
-                            Salmon Cheese
-                        </h2>
+                        <span class="section__subtitle">Jadwal Kegiatan</span>
+                        <h3 class="section__title">
+                            Selasa, 12 Juli 2023
+                        </h3>
+                        <!-- 
 
                         <p class="recently__description">
                             Take a look at what's new. And do not deprive
@@ -211,12 +211,54 @@
 
                         <a href="#" class="button">
                             Order Now <i class="ri-arrow-right-line"></i>
-                        </a>
+                        </a> -->
 
-                        <img src="img/spinach-leaf.png" alt="recently image" class="recently__data-img">
+                        <table>
+                            <div class="kegiatan__container">
+                                <div class="waktu__kegiatan">
+                                    <p>09.00 WIB s/d 10.00 WIB</p>
+                                </div>
+
+                                <div class="title__kegiatan">
+                                    <p>Pengajian Rutin Mingguan</p>
+                                </div>
+
+                                <div class="detail__kegiatan">
+                                    <a>
+                                        Selengkapnya
+                                    </a>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#d36836}</style><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+
+                                </div>
+                            </div>
+
+                            <div class="kegiatan__container">
+                                <div class="waktu__kegiatan">
+                                    <p>11.00 WIB s/d selesai</p>
+                                </div>
+
+                                <div class="title__kegiatan">
+                                    <p>Bersih-bersih Masjid</p>
+                                </div>
+                            </div>
+
+                        </table>
+
                     </div>
 
-                    <img src="img/recently-salmon-sushi.png" alt="recently image" class="recently__img">
+                    <div class="wrapper">
+                        <header>
+                          <p class="kegiatan__yad">Kegiatan Yang Akan Datang</p>
+                        </header>
+                        
+                        <div class="kegiatan__body">
+                            <% for (let row of dataKegiatan) { %>
+                                <p class="kegiatan__time"><%= row.hari %>, <%= row.day %> <%= row.bulan %> <%= row.tahun %></p>
+                                <p class="kegiatan__nama"><%= row.nama_kegiatan %></p>
+                            <% } %> 
+                        </div>
+                    </div>
                 </div>
 
                 <img src="img/leaf-branch-2.png" alt="recently image" class="recently__leaf-1">
@@ -232,12 +274,12 @@
                         <div class="newsletter__data">
                             <span class="section__subtitle">Newsletter</span>
                             <h2 class="section__title">
-                                Subscribe For <br>
-                                Offer Updates
+                                Subscribe untuk <br>
+                                mengikuti informasi terkini
                             </h2>
 
                             <form name="submit-to-google-sheet" class="newsletter__form">
-                                <input type="email" placeholder="Enter email" class="newsletter__input" name="Email" required>
+                                <input type="email" placeholder="Masukan email" class="newsletter__input" name="Email" required>
                                 <input type="text" name="Tanggal" value="<%= timeSubscribe %>" hidden>
 
                                 <button type="submit" class="button newsletter__button">
