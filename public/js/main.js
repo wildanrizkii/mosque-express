@@ -138,3 +138,25 @@ closeBtn.forEach(function(button) {
         closeModal(target);
     });
 });
+
+
+/*=============== Email Subscribe ===============*/
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxEYzEtQYGLjcM7kikIY93CyOlVhh6tnSwCAI5yETqitnSwadSZ-qCdi52k-sFtdUDc-w/exec'
+const form = document.forms['submit-to-google-sheet']
+const inputEmail = document.querySelector('input[name=Email]');
+
+form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+            form.reset();
+            inputEmail.placeholder = "Berhasil, terima kasih!"
+            console.log('Success', response)
+        })
+        .catch(error => {
+            form.reset();
+            inputEmail.placeholder = "Anda sudah subscribe!"
+            // console.log('Anda Sudah Subscribe')
+            // console.error('Error!', error.message)
+        })
+})

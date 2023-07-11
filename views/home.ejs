@@ -236,10 +236,11 @@
                                 Offer Updates
                             </h2>
 
-                            <form action="" class="newsletter__form">
-                                <input type="email" placeholder="Enter email" class="newsletter__input">
+                            <form name="submit-to-google-sheet" class="newsletter__form">
+                                <input type="email" placeholder="Enter email" class="newsletter__input" name="Email" required>
+                                <input type="text" name="Tanggal" value="<%= timeSubscribe %>" hidden>
 
-                                <button class="button newsletter__button">
+                                <button type="submit" class="button newsletter__button">
                                     Subscribe <i class="ri-send-plane-line"></i>
                                 </button>
                             </form>

@@ -18,14 +18,14 @@ app.get("/", async (req, res) => {
 
     const kota = 'Bandung';
     const APIUrl = 'https://api.api-ninjas.com/v1/worldtime?city=' + kota;
-    const apiKey = 'NoWN4Uv5h9SaZGYWHcbJbg==1bAK2bvlRKJ6HAq8';
-    let waktuSekarang, tahun, bulan, tanggal;
+    const APIKey = 'NoWN4Uv5h9SaZGYWHcbJbg==1bAK2bvlRKJ6HAq8';
+    let waktuSekarang, tahun, bulan, tanggal, timeSubscribe;
     
 
     fetch(APIUrl, {
         method: 'GET',
         headers: {
-          'X-Api-Key': apiKey
+          'X-Api-Key': APIKey
         },
         contentType: 'application/json',
         json: true
@@ -38,6 +38,7 @@ app.get("/", async (req, res) => {
         tahun = time.year
         bulan = time.month
         tanggal = time.day
+        timeSubscribe = time.datetime
         let URL = 'https://api.myquran.com/v1/sholat/jadwal/1219/' + tahun + '/' + bulan + '/' + tanggal
 
         fetch(URL)
@@ -77,7 +78,7 @@ app.get("/", async (req, res) => {
                 let waktuMenitIsya = isya.split(':')[1]
                 let waktuIsya = parseInt(waktuJamIsya) + parseInt(waktuMenitIsya)
 
-                res.status(200).render('home', { jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya });
+                res.status(200).render('home', { jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya, timeSubscribe });
             });
         })
   });
