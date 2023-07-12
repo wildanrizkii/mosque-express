@@ -551,6 +551,7 @@ body.dark-theme{
 
 .kegiatan__container{
   padding: 20px 0 0 0;
+  text-align: center;
 }
 
 .title__kegiatan,
@@ -894,8 +895,8 @@ body.dark-theme{
   .recently__container{
     grid-template-columns: 0fr;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    /* align-items: center;
+    text-align: center; */
 
   }
 
@@ -942,8 +943,8 @@ body.dark-theme{
   .recently__container{
     grid-template-columns: 0fr;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    /* align-items: center;
+    text-align: center; */
   }
 
   .wrapper{
@@ -990,8 +991,8 @@ body.dark-theme{
 
   .recently__container{
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    /* align-items: center;
+    text-align: center; */
   }
 
   .wrapper{
@@ -1007,7 +1008,7 @@ body.dark-theme{
 /* For large devices */
 @media screen and (min-width: 1024px){
   .section{
-    padding-block: 7rem 1.5rem;
+    padding-block: 6rem 1.5rem;
   }
   .section__subtitle{
     margin-bottom: .75rem;
@@ -1089,7 +1090,7 @@ body.dark-theme{
 
   .recently__container{
     grid-template-columns: 480px 480px;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     column-gap: 7rem;
     padding-bottom: 2rem;
@@ -1172,8 +1173,8 @@ body.dark-theme{
   }
 
   .home__img{
-    max-width: 540px;
-    padding: 0 1.75rem 0 0;
+    max-width: 560px;
+    padding: 0 2.5rem 0 0;
   }
 }
 
@@ -1280,13 +1281,27 @@ body.dark-theme{
 .wrapper{
   max-width: 450px;
   min-height: 495px;
+  max-height: 495px;
   background-color: var(--container-color);
-  border-radius: 10px;
+  border-radius: 1rem;
   box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);
   transition: background 0.4s; /* for dark mode animation */
   border-left: black;
   justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
+
+.wrapper::-webkit-scrollbar {
+  background-color: transparent;
+  width: 6px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--first-color);
+  width: 6px;
+}
+
 .wrapper header{
   align-items: center;
   padding: 26px 30px 36px;
@@ -1312,13 +1327,57 @@ body.dark-theme{
   padding: 4px 6px 0 0;
 }
 
+.kegiatan__body{
+  display: grid;
+  padding: 0 36px 0 36px;
+  grid-template-rows: repeat(5, 80px);
+  row-gap: 14px;
+}
+
 .kegiatan__yad{
+  font-size: var(--h2-font-size);
   font-family: var(--subtitle-font);
   color: var(--first-color);
+  text-align: center;
 }
 
 .kegiatan__nama{
   font-size: var(--h3-font-size);
   font-family: var(--title-font);
-  padding: 0 0 18px 0;
+}
+
+.kegiatan__time{
+  font-size: small;
+}
+
+.kegiatan__list{
+  display: grid;
+  grid-template-rows: repeat(2, 20px);
+}
+
+.kegiatan__box{
+  display: flex;
+  grid-template-columns: repeat(3, 40px 200px 40px);
+  column-gap: 20px;
+  padding: 0 0 0 20px;
+  align-items: center;
+  border-radius: 10px;
+  background-color: var(--body-color);
+  max-height: 100px;
+  overflow: auto;
+  cursor: pointer;
+}
+
+.kegiatan__selengkapnya{
+  display: flex;
+  padding: 10px 0 28px 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  column-gap: 0.6rem;
+  cursor: pointer;
+}
+
+.notif__kosong{
+  text-align: center;
 }
