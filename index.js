@@ -19,7 +19,11 @@ app.get("/", async (req, res) => {
     const kota = 'Bandung';
     const APIUrl = 'https://api.api-ninjas.com/v1/worldtime?city=' + kota;
     const APIKey = 'NoWN4Uv5h9SaZGYWHcbJbg==1bAK2bvlRKJ6HAq8';
-    const APIKegiatan = 'https://v1.nocodeapi.com/wildanrizkii/google_sheets/StuMBMJbZAHAfgVd?tabId=Kegiatan'
+    // NoCodeAPI
+    // const APIKegiatan = 'https://v1.nocodeapi.com/wildanrizkii/google_sheets/StuMBMJbZAHAfgVd?tabId=Kegiatan'
+
+    // SheetDB API
+    const APIKegiatan = 'https://sheetdb.io/api/v1/cwocbdhpkx4z4'
     let waktuSekarang, tahun, bulan, tanggal, timeSubscribe, dataKegiatan;
     
 
@@ -89,7 +93,9 @@ app.get("/", async (req, res) => {
                         return res.json();
                     })
                     .then(function (data) {
-                        dataKegiatan = data.data
+                        // SheetDB : dataKegiatan = data
+                        // NoCodeAPI : dataKegiatan = data.data
+                        dataKegiatan = data
                         res.status(200).render('home', { jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya, timeSubscribe, dataKegiatan });
                     })
 
