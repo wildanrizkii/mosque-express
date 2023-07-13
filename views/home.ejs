@@ -86,29 +86,29 @@
                     <div class="jadwal__data">
                         <span class="section__subtitle">Jadwal Sholat Selanjutnya</span>
                         <h2 class="section__title jadwal__title"> 
-                            <% if (waktuSekarang > waktuIsya || waktuSekarang < waktuSubuh) { %>
+                            <% if (waktuSekarang >= waktuIsya || waktuSekarang <= waktuSubuh) { %>
                                 Sholat Subuh
-                            <% } else if (waktuSekarang > waktuSubuh && waktuSekarang < waktuDzuhur) { %>
+                            <% } else if (waktuSekarang >= waktuSubuh && waktuSekarang <= waktuDzuhur) { %>
                                 Sholat Dzuhur
-                            <% } else if (waktuSekarang > waktuDzuhur && waktuSekarang < waktuAshar) { %>
+                            <% } else if (waktuSekarang >= waktuDzuhur && waktuSekarang <= waktuAshar) { %>
                                 Sholat Ashar
-                            <% } else if (waktuSekarang > waktuAshar && waktuSekarang < waktuMaghrib) { %>
+                            <% } else if (waktuSekarang >= waktuAshar && waktuSekarang <= waktuMaghrib) { %>
                                 Sholat Maghrib
-                            <% } else if (waktuSekarang > waktuMaghrib && waktuSekarang < waktuIsya) { %>
+                            <% } else if (waktuSekarang >= waktuMaghrib && waktuSekarang <= waktuIsya) { %>
                                 Sholat Isya
                             <% } %>
                         </h2>
 
                         <p class="jadwal__description">
-                            <% if (waktuSekarang > waktuIsya || waktuSekarang < waktuSubuh) { %>
+                            <% if (waktuSekarang >= waktuIsya || waktuSekarang <= waktuSubuh) { %>
                                 <%= jadwalSholat.subuh %> WIB
-                            <% } else if (waktuSekarang > waktuSubuh && waktuSekarang < waktuDzuhur) { %>
+                            <% } else if (waktuSekarang >= waktuSubuh && waktuSekarang <= waktuDzuhur) { %>
                                 <%= jadwalSholat.dzuhur %> WIB
-                            <% } else if (waktuSekarang > waktuDzuhur && waktuSekarang < waktuAshar) { %>
+                            <% } else if (waktuSekarang >= waktuDzuhur && waktuSekarang <= waktuAshar) { %>
                                 <%= jadwalSholat.ashar %> WIB
-                            <% } else if (waktuSekarang > waktuAshar && waktuSekarang < waktuMaghrib) { %>
+                            <% } else if (waktuSekarang >= waktuAshar && waktuSekarang <= waktuMaghrib) { %>
                                 <%= jadwalSholat.maghrib %> WIB
-                            <% } else if (waktuSekarang > waktuMaghrib && waktuSekarang < waktuIsya) { %>
+                            <% } else if (waktuSekarang >= waktuMaghrib && waktuSekarang <= waktuIsya) { %>
                                 <%= jadwalSholat.isya %> WIB
                             <% } %>
                         </p>
