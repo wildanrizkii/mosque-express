@@ -200,49 +200,51 @@
                     <div class="recently__data">
                         <span class="section__subtitle">Kegiatan Hari Ini</span>
                         <h3 class="section__title">
-                            Selasa, 12 Juli 2023
+                            <%= tanggalSekarangID %>
                         </h3>
-                        <!-- 
+                        <% let count = 0 %>
+                        <% for (row of dataKegiatan) { %>
 
-                        <p class="recently__description">
-                            Take a look at what's new. And do not deprive
-                            yourself of a good meal, enjoy and be happy.
-                        </p>
+                            <% let bulan %>
+                            <% if (row.month < 10){ %>
+                                <% bulan = '0' + row.month %>
+                            <% } %>
+                            <% tanggalKegiatan = new Date(row.tahun + '-' + bulan + '-' + row.day) %>
 
-                        <a href="#" class="button">
-                            Order Now <i class="ri-arrow-right-line"></i>
-                        </a> -->
-
+                            <% if (tanggalSekarang.getTime() == tanggalKegiatan.getTime()) { %>
+                                <% count++ %>
+                            <% } %>
+                        <% } %>
+                        <% if (count == 0) { %>
+                            <div class="notif__kosong">
+                                <p>Tidak ada kegiatan yang akan datang</p>
+                            </div>
+                        <% } %>
                         <table>
                             <div class="kegiatan__container">
-                                <div class="waktu__kegiatan">
-                                    <p>09.00 WIB s/d 10.00 WIB</p>
-                                </div>
-
-                                <div class="title__kegiatan">
-                                    <p>Pengajian Rutin Mingguan</p>
-                                </div>
-
-                                <div class="detail__kegiatan">
-                                    <a>
-                                        Selengkapnya
-                                    </a>
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#d36836}</style><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
-
-                                </div>
+                                <% for (let row of dataKegiatan){ %>
+                                    <% let bulan %>
+                                    <% if (row.month < 10){ %>
+                                        <% bulan = '0' + row.month %>
+                                    <% } %>
+                                    <% tanggalKegiatan = new Date(row.tahun + '-' + bulan + '-' + row.day) %>
+                            
+                                    <% if (tanggalSekarang.getTime() == tanggalKegiatan.getTime()) { %>
+                                        <div class="waktu__kegiatan">
+                                            <p><%= row.start_time %> WIB s/d <%= row.end_time %> WIB</p>
+                                        </div>
+        
+                                        <div class="title__kegiatan">
+                                            <p><%= row.nama_kegiatan %></p>
+                                        </div>
+        
+                                        <div class="detail__kegiatan">
+                                            <a>Selengkapnya</a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#d36836}</style><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+                                        </div>
+                                    <% } %>
+                                <% } %>
                             </div>
-
-                            <div class="kegiatan__container">
-                                <div class="waktu__kegiatan">
-                                    <p>11.00 WIB s/d selesai</p>
-                                </div>
-
-                                <div class="title__kegiatan">
-                                    <p>Bersih-bersih Masjid</p>
-                                </div>
-                            </div>
-
                         </table>
 
                     </div>
@@ -255,9 +257,12 @@
                         <div class="kegiatan__body">
                             <% let i = 0 %>
                             <% for (let row of dataKegiatan) { %>
-                                <% if (i >= 5){ %>
-                                    <% break %>
-                                <% } else{ %>
+                                <% let bulan %>
+                                <% if (row.month < 10){ %>
+                                    <% bulan = '0' + row.month %>
+                                <% } %>
+                                <% let date = new Date(row.tahun + '-' + bulan + '-' + row.day)%>
+                                <% if (tanggalSekarang < date) { %>
                                     <div class="kegiatan__box">
                                         <div class="no__kegiatan">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#d56e3f}</style><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg>
@@ -268,10 +273,28 @@
                                         </div>
                                     </div>
                                 <% } %>
-                                <% i++ %>
-                            <% } %> 
 
-                            <% if (i > 3) { %>
+                                <% tanggalKegiatan = new Date(row.tahun + '-' + bulan + '-' + row.day) %>
+                                <% if (tanggalSekarang.getTime() != tanggalKegiatan.getTime()) { %>
+                                    <% i++ %> 
+                                <% } %>
+                                <% if (i > 4){ %>
+                                    <% break %>
+                                <% } %>
+                            <% } %> 
+                            <% let j = 0 %> 
+                            <% for (row of dataKegiatan) { %>
+                                <% let bulan %>
+                                <% if (row.month < 10){ %>
+                                    <% bulan = '0' + row.month %>
+                                <% } %>
+                                <% tanggalKegiatan = new Date(row.tahun + '-' + bulan + '-' + row.day) %>
+
+                                <% if (tanggalSekarang.getTime() != tanggalKegiatan.getTime()) { %>
+                                    <% j++ %> 
+                                <% } %>
+                            <% } %>
+                            <% if (j > 5) { %>
                                 <div class="kegiatan__selengkapnya">
                                     <a>Selengkapnya</a>
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#d56e3f}</style><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>

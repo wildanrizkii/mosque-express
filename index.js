@@ -51,6 +51,55 @@ app.get("/", async (req, res) => {
 
     // Waktu dalam bentuk JSON
     time = await getTime(timeAPI, APIKey);
+    
+    const tanggalSekarang = new Date(time.date);
+    
+    let hariSekarang = time.day_of_week;
+    let bulanSekarang = time.month;
+
+    if (hariSekarang == 'Monday'){
+        hariSekarang = 'Senin'
+    } else if(hariSekarang == 'Tuesday'){
+        hariSekarang = 'Selasa'
+    } else if(hariSekarang == 'Wednesday'){
+        hariSekarang = 'Rabu'
+    } else if(hariSekarang == 'Thursday'){
+        hariSekarang = 'Kamis'
+    } else if(hariSekarang == 'Friday'){
+        hariSekarang = 'Jumat'
+    } else if(hariSekarang == 'Saturday'){
+        hariSekarang = 'Sabtu'
+    } else if(hariSekarang == 'Sunday'){
+        hariSekarang = 'Minggu'
+    }
+
+    if (bulanSekarang == '01'){
+        bulanSekarang = 'Januari'
+    } else if(bulanSekarang == '02'){
+        bulanSekarang = 'Februari'
+    } else if(bulanSekarang == '03'){
+        bulanSekarang = 'Maret'
+    } else if(bulanSekarang == '04'){
+        bulanSekarang = 'April'
+    } else if(bulanSekarang == '05'){
+        bulanSekarang = 'Mei'
+    } else if(bulanSekarang == '06'){
+        hariSekarang = 'Juni'
+    } else if(bulanSekarang == '07'){
+        bulanSekarang = 'Juli'
+    } else if(bulanSekarang == '08'){
+        bulanSekarang = 'Agustus'
+    } else if(bulanSekarang == '09'){
+        bulanSekarang = 'September'
+    } else if(bulanSekarang == '10'){
+        bulanSekarang = 'Oktober'
+    } else if(bulanSekarang == '11'){
+        bulanSekarang = 'November'
+    } else if(bulanSekarang == '12'){
+        bulanSekarang = 'Desember'
+    }
+    
+    const tanggalSekarangID = hariSekarang + ', ' + time.day + ' ' + bulanSekarang + ' ' + time.year
 
     // Mengolah Waktu
     waktuSekarang = parseInt(time.hour * 60) + parseInt(time.minute)
@@ -77,46 +126,46 @@ app.get("/", async (req, res) => {
 
     // Fungsi untuk mengambil jadwal sholat subuh
     async function getSholatSubuh(jadwalSholat) {
-        let subuh = jadwalSholat.subuh
-        let waktuJamSubuh = subuh.split(':')[0] * 60
-        let waktuMenitSubuh = subuh.split(':')[1]
-        let waktuSubuh = parseInt(waktuJamSubuh) + parseInt(waktuMenitSubuh)
+        const subuh = jadwalSholat.subuh
+        const waktuJamSubuh = subuh.split(':')[0] * 60
+        const waktuMenitSubuh = subuh.split(':')[1]
+        const waktuSubuh = parseInt(waktuJamSubuh) + parseInt(waktuMenitSubuh)
         return waktuSubuh;
     }
 
     // Fungsi untuk mengambil jadwal sholat dzuhur
     async function getSholatDzuhur(jadwalSholat) {
-        let dzuhur = jadwalSholat.dzuhur
-        let waktuJamDzuhur = dzuhur.split(':')[0] * 60
-        let waktuMenitDzuhur = dzuhur.split(':')[1]
-        let waktuDzuhur = parseInt(waktuJamDzuhur) + parseInt(waktuMenitDzuhur)
+        const dzuhur = jadwalSholat.dzuhur
+        const waktuJamDzuhur = dzuhur.split(':')[0] * 60
+        const waktuMenitDzuhur = dzuhur.split(':')[1]
+        const waktuDzuhur = parseInt(waktuJamDzuhur) + parseInt(waktuMenitDzuhur)
         return waktuDzuhur;
     }
 
     // Fungsi untuk mengambil jadwal sholat ashar
     async function getSholatAshar(jadwalSholat) {
-        let ashar = jadwalSholat.ashar
-        let waktuJamAshar = ashar.split(':')[0] * 60
-        let waktuMenitAshar = ashar.split(':')[1]
-        let waktuAshar = parseInt(waktuJamAshar) + parseInt(waktuMenitAshar)
+        const ashar = jadwalSholat.ashar
+        const waktuJamAshar = ashar.split(':')[0] * 60
+        const waktuMenitAshar = ashar.split(':')[1]
+        const waktuAshar = parseInt(waktuJamAshar) + parseInt(waktuMenitAshar)
         return waktuAshar;
     }
 
     // Fungsi untuk mengambil jadwal sholat maghrib
     async function getSholatMaghrib(jadwalSholat) {
-        let maghrib = jadwalSholat.maghrib
-        let waktuJamMaghrib = maghrib.split(':')[0] * 60
-        let waktuMenitMaghrib = maghrib.split(':')[1]
-        let waktuMaghrib = parseInt(waktuJamMaghrib) + parseInt(waktuMenitMaghrib)
+        const maghrib = jadwalSholat.maghrib
+        const waktuJamMaghrib = maghrib.split(':')[0] * 60
+        const waktuMenitMaghrib = maghrib.split(':')[1]
+        const waktuMaghrib = parseInt(waktuJamMaghrib) + parseInt(waktuMenitMaghrib)
         return waktuMaghrib;
     }
 
     // Fungsi untuk mengambil jadwal sholat isya
     async function getSholatIsya(jadwalSholat) {
-        let isya = jadwalSholat.isya
-        let waktuJamIsya = isya.split(':')[0] * 60
-        let waktuMenitIsya = isya.split(':')[1]
-        let waktuIsya = parseInt(waktuJamIsya) + parseInt(waktuMenitIsya)
+        const isya = jadwalSholat.isya
+        const waktuJamIsya = isya.split(':')[0] * 60
+        const waktuMenitIsya = isya.split(':')[1]
+        const waktuIsya = parseInt(waktuJamIsya) + parseInt(waktuMenitIsya)
         return waktuIsya;
     }
 
@@ -127,11 +176,11 @@ app.get("/", async (req, res) => {
         return data;
     }
 
-    let waktuSubuh = await getSholatSubuh(jadwalSholat);
-    let waktuDzuhur = await getSholatDzuhur(jadwalSholat);
-    let waktuAshar = await getSholatAshar(jadwalSholat);
-    let waktuMaghrib = await getSholatMaghrib(jadwalSholat);
-    let waktuIsya = await getSholatIsya(jadwalSholat);
+    const waktuSubuh = await getSholatSubuh(jadwalSholat);
+    const waktuDzuhur = await getSholatDzuhur(jadwalSholat);
+    const waktuAshar = await getSholatAshar(jadwalSholat);
+    const waktuMaghrib = await getSholatMaghrib(jadwalSholat);
+    const waktuIsya = await getSholatIsya(jadwalSholat);
 
     // SheetDB
     // let dataKegiatan = await getKegiatan(APIKegiatan);
@@ -141,11 +190,16 @@ app.get("/", async (req, res) => {
     // let dataKegiatan = kegiatan.data
 
     // gsx2json
-    let kegiatan = await getKegiatan(APIKegiatan);
-    let dataKegiatan = kegiatan.rows
+    const kegiatan = await getKegiatan(APIKegiatan);
+    const dataKegiatan = kegiatan.rows
+
+    // Experiment
 
     res.status(200).render('home', { 
-        jadwalSholat, waktuSekarang, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya, timeSubscribe, dataKegiatan 
+        jadwalSholat, waktuSekarang, waktuSubuh,
+        waktuDzuhur, waktuAshar, waktuMaghrib,
+        waktuIsya, timeSubscribe, dataKegiatan,
+        tanggalSekarang, hariSekarang, tanggalSekarangID
     });
 });
 

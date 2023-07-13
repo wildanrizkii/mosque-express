@@ -550,7 +550,7 @@ body.dark-theme{
 }
 
 .kegiatan__container{
-  padding: 20px 0 0 0;
+  padding: 20px 0 40px 0;
   text-align: center;
 }
 
@@ -1280,8 +1280,8 @@ body.dark-theme{
 
 .wrapper{
   max-width: 450px;
-  min-height: 495px;
-  max-height: 495px;
+  min-height: 600px;
+  max-height: 630px;
   background-color: var(--container-color);
   border-radius: 1rem;
   box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);
@@ -1316,6 +1316,7 @@ body.dark-theme{
 
 .detail__kegiatan{
   display: flex;
+  margin: 10px 0 40px 0;
   cursor: pointer;
   align-items: center;
   justify-content: center;
