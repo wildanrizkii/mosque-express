@@ -141,11 +141,8 @@ license.forEach(function(button) {
 selengkapnya.forEach(function(button) {
     button.addEventListener("click", function() {
         var target = button.getAttribute("data-target");
-        // active_tab.classList.add('active');
-        // active_content.classList.add('active');
 
-        let i = 0;
-        for (i; i <= all_content.length/2; i = i + 2){
+        for (let i = 0; i <= all_content.length/2; i = i + 2){
             all_content[i].classList.add('active');
             all_content[i+1].classList.remove('active');
         }
@@ -154,13 +151,7 @@ selengkapnya.forEach(function(button) {
             tabs[i].classList.add('active');
             tabs[i+1].classList.remove('active');
         }
-
-        // if (deactive_content.classList.contains('active')){
-        //     active_tab.classList.add('active');
-        //     active_content.classList.add('active');
-        //     deactive_content.classList.remove('active');
-            
-        // }
+        
         openModal(target);
     });
 });
@@ -169,10 +160,6 @@ selengkapnya.forEach(function(button) {
 closeBtn.forEach(function(button) {
     button.addEventListener("click", function() {
         var target = button.getAttribute("data-target");
-        // tabs[0].classList.add('active');
-        // tabs[1].classList.remove('active');
-        // tabs[2].classList.add('active');
-        // tabs[3].classList.remove('active');
 
         for (let i = 0; i <= tabs.length/2; i = i + 2){
             tabs[i].classList.add('active');
@@ -205,8 +192,6 @@ form.addEventListener('submit', e => {
         .catch(error => {
             form.reset();
             inputEmail.placeholder = "Anda sudah subscribe!"
-            // console.log('Anda Sudah Subscribe')
-            // console.error('Error!', error.message)
         })
 })
 

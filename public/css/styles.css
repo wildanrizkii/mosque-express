@@ -1397,10 +1397,17 @@ body.dark-theme{
 }
 
 .img__wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50%;
-  background-color: grey;
+  background-color: lightgrey;
   border-radius: 10px;
   box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);
+}
+
+.img__wrapper svg{
+  height: 2.5rem;
 }
 
 .notif__kosong{
@@ -1411,12 +1418,11 @@ body.dark-theme{
   display: flex;
   grid-template-columns: repeat(2, 45% 45%);
   column-gap: 20px;
-  justify-content: end;
 }
 
 .kegiatan__tab {
   width: 50%;
-  height: 80%;
+  height: 480px;
   display: flex;
   flex-direction: column;
   background: var(--container-color);
