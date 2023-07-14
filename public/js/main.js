@@ -111,7 +111,15 @@ sr.reveal(`.popular__card`, {interval: 100})
 
 /*=============== OPEN MODAL / POPUP ===============*/
 const license = document.querySelectorAll(".license");
+const selengkapnya = document.querySelectorAll(".selengkapnya");
 const closeBtn = document.querySelectorAll(".close");
+const tabs = document.querySelectorAll('.tab__btn');
+const active_tab = document.querySelector('.tab__btn:first-child');
+const deactive_tab = document.querySelector('.tab__btn:last-child');
+const all_content = document.querySelectorAll('.content__container');
+const active_content = document.querySelector('.content__container:first-child');
+const deactive_content = document.querySelector('.content__container:last-child');
+console.log(all_content)
 
 function openModal(target) {
     document.getElementById(target).style.display = "flex";
@@ -127,7 +135,33 @@ license.forEach(function(button) {
     button.addEventListener("click", function() {
         var target = button.getAttribute("data-target");
         openModal(target);
-        console.log(button)
+    });
+});
+
+selengkapnya.forEach(function(button) {
+    button.addEventListener("click", function() {
+        var target = button.getAttribute("data-target");
+        // active_tab.classList.add('active');
+        // active_content.classList.add('active');
+
+        let i = 0;
+        for (i; i <= all_content.length/2; i = i + 2){
+            all_content[i].classList.add('active');
+            all_content[i+1].classList.remove('active');
+        }
+
+        for (let i = 0; i <= tabs.length/2; i = i + 2){
+            tabs[i].classList.add('active');
+            tabs[i+1].classList.remove('active');
+        }
+
+        // if (deactive_content.classList.contains('active')){
+        //     active_tab.classList.add('active');
+        //     active_content.classList.add('active');
+        //     deactive_content.classList.remove('active');
+            
+        // }
+        openModal(target);
     });
 });
 
@@ -135,6 +169,21 @@ license.forEach(function(button) {
 closeBtn.forEach(function(button) {
     button.addEventListener("click", function() {
         var target = button.getAttribute("data-target");
+        // tabs[0].classList.add('active');
+        // tabs[1].classList.remove('active');
+        // tabs[2].classList.add('active');
+        // tabs[3].classList.remove('active');
+
+        for (let i = 0; i <= tabs.length/2; i = i + 2){
+            tabs[i].classList.add('active');
+            tabs[i+1].classList.remove('active');
+        }
+
+        for (let i = 0; i <= all_content.length/2; i = i + 2){
+            all_content[i].classList.add('active');
+            all_content[i+1].classList.remove('active');
+        }
+
         closeModal(target);
     });
 });
@@ -161,4 +210,20 @@ form.addEventListener('submit', e => {
         })
 })
 
-/*=============== Calendar ===============*/
+/*=============== Nav Tab ===============*/
+
+
+
+tabs.forEach((tab, index) => {
+    tab.addEventListener('click', (e) => {
+        tabs.forEach(tab=>{tab.classList.remove('active')});
+        tab.classList.add('active');
+
+        // var line = document.querySelector('.line');
+        // line.style.width = e.target.offsetWidth + "px";
+        // line.style.left = e.target.offsetLeft + "px";
+
+        all_content.forEach(content=>{content.classList.remove('active')})
+        all_content[index].classList.add('active')
+    })
+})

@@ -1038,10 +1038,10 @@ body.dark-theme{
     padding-inline: 0 10rem;
   }
   .home__img{
-    width: 580px;
+    width: 540px;
     position: absolute;
-    top: 1.5rem;
-    right: -2rem;
+    top: 1.8rem;
+    right: 1rem;
   }
 
   .jadwal__container{
@@ -1232,6 +1232,18 @@ body.dark-theme{
   display: none;
 }
 
+.popupKegiatan {
+  background-color: var(--body-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  height: 66%;
+  max-width: 820px;
+  max-height: 800px;
+  overflow: auto;
+}
+
 .popupLicenses {
   background-color: #fff;
   padding: 20px;
@@ -1243,11 +1255,16 @@ body.dark-theme{
   overflow: auto;
 }
 
+.kegiatan__close{
+  display: flex;
+  justify-content: center;
+  margin: 36px 0 0 0;
+}
+
 .btn-batal{
-  float: right;
-  border-radius: 20px;
-  height: 26px;
-  width: 26px;
+  border-radius: 10px;
+  height: 46px;
+  width: 100px;
   border: none;
   cursor: pointer;
   background-color: var(--first-color);
@@ -1379,6 +1396,86 @@ body.dark-theme{
   cursor: pointer;
 }
 
+.img__wrapper{
+  width: 50%;
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);
+}
+
 .notif__kosong{
   text-align: center;
+}
+
+.modal__body-detail{
+  display: flex;
+  grid-template-columns: repeat(2, 45% 45%);
+  column-gap: 20px;
+  justify-content: end;
+}
+
+.kegiatan__tab {
+  width: 50%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  background: var(--container-color);
+  box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tab__box{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 18px;
+  position: relative;
+}
+
+.tab__box .tab__btn{
+  font-size: 18px;
+  color: var(--text-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 18px;
+}
+
+.tab__box .tab__btn.active{
+  color: var(--first-color-alt);
+  border-bottom: solid 5px var(--first-color-alt);
+}
+
+.kegiatan__content{
+  padding: 20px;
+}
+
+.kegiatan__content .content__container{
+  display: none;
+  animation: moving .5s ease;
+}
+@keyframes moving{
+  from{transform: translateX(50px); opacity: 0;}
+  to{transform: translateX(0px); opacity: 1;}
+}
+
+.kegiatan__content .content__container.active{
+  display: block;
+}
+
+.kegiatan__content .content__container h2{
+  margin-bottom: 10px;
+}
+
+.line{
+  position: absolute;
+  top: 62px;
+  left: 49px;
+  width: 90px;
+  height: 5px;
+  background-color: var(--first-color);
+  border-radius: 10px;
+  transition: all .3s ease-in-out;
 }

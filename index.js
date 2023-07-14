@@ -195,11 +195,49 @@ app.get("/", async (req, res) => {
 
     // Experiment
 
+    async function getKegiatanHariIni() {
+        let kegiatanHariIni = []
+        for (let row of dataKegiatan) {
+            let bulan
+
+            if (row.month < 10) {
+                bulan = '0' + row.month
+            }
+            let tanggalKegiatan = new Date(row.tahun + '-' + bulan + '-' + row.day)
+
+            if (tanggalSekarang.getTime() == tanggalKegiatan.getTime()) {
+                kegiatanHariIni.push(row)
+            }
+        }
+        return kegiatanHariIni;
+    }
+
+    async function getKegiatanBesok() {
+        let kegiatanBesok = []
+        for (let row of dataKegiatan){
+            let bulan
+            
+            if (row.month < 10){
+                bulan = '0' + row.month
+            }
+            let tanggalKegiatan = new Date(row.tahun + '-' + bulan + '-' + row.day)
+    
+            if (tanggalSekarang.getTime() < tanggalKegiatan.getTime()) {
+                kegiatanBesok.push(row)
+            }
+        }
+        return kegiatanBesok;
+    }
+
+    const kegiatanHariIni = await getKegiatanHariIni();
+    const kegiatanBesok = await getKegiatanBesok();
+
     res.status(200).render('home', { 
         jadwalSholat, waktuSekarang, waktuSubuh,
         waktuDzuhur, waktuAshar, waktuMaghrib,
-        waktuIsya, timeSubscribe, dataKegiatan,
-        tanggalSekarang, hariSekarang, tanggalSekarangID
+        waktuIsya, timeSubscribe, tanggalSekarang,
+        hariSekarang, tanggalSekarangID, kegiatanHariIni,
+        kegiatanBesok
     });
 });
 
