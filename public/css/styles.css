@@ -905,6 +905,11 @@ body.dark-theme{
     justify-content: center;
   }
 
+  .modal__body-detail{
+    grid-template-columns: 276px;
+    min-width: 276px;
+  }
+
   .newsletter__content{
     padding: 6rem 1rem 2rem;
   }
@@ -945,6 +950,11 @@ body.dark-theme{
     justify-content: center;
     /* align-items: center;
     text-align: center; */
+  }
+
+  .modal__body-detail{
+    grid-template-columns: 326px;
+    min-width: 276px;
   }
 
   .wrapper{
@@ -993,6 +1003,11 @@ body.dark-theme{
     justify-content: center;
     /* align-items: center;
     text-align: center; */
+  }
+
+  .modal__body-detail{
+    grid-template-columns: 296px 296px;
+    column-gap: 20px;
   }
 
   .wrapper{
@@ -1088,6 +1103,10 @@ body.dark-theme{
     bottom: 2rem;
   }
 
+  .modal__body-detail{
+    grid-template-columns: 376px 376px;
+    column-gap: 20px;
+  }
   .recently__container{
     grid-template-columns: 480px 480px;
     /* align-items: center; */
@@ -1233,6 +1252,7 @@ body.dark-theme{
 }
 
 .popupKegiatan {
+  display: grid;
   background-color: var(--body-color);
   padding: 20px;
   border-radius: 8px;
@@ -1241,7 +1261,9 @@ body.dark-theme{
   height: 66%;
   max-width: 820px;
   max-height: 800px;
-  overflow: auto;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .popupLicenses {
@@ -1400,7 +1422,10 @@ body.dark-theme{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  height: 480px;
+  max-height: 540px;
+  width: 100%;
+  min-width: 220px;
   background-color: lightgrey;
   border-radius: 10px;
   box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);
@@ -1408,6 +1433,7 @@ body.dark-theme{
 
 .img__wrapper svg{
   height: 2.5rem;
+  fill: #fff;
 }
 
 .notif__kosong{
@@ -1415,14 +1441,15 @@ body.dark-theme{
 }
 
 .modal__body-detail{
-  display: flex;
-  grid-template-columns: repeat(2, 45% 45%);
-  column-gap: 20px;
+  display: grid;
+  justify-content: center;
+  row-gap: 2rem;
 }
 
 .kegiatan__tab {
-  width: 50%;
+  min-width: 220px;
   height: 480px;
+  max-height: 540px;
   display: flex;
   flex-direction: column;
   background: var(--container-color);
