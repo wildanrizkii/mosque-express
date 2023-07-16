@@ -906,8 +906,8 @@ body.dark-theme{
   }
 
   .modal__body-detail{
-    grid-template-columns: 276px;
-    min-width: 276px;
+    grid-template-columns: 326px;
+    min-width: 326px;
   }
 
   .newsletter__content{
@@ -954,7 +954,7 @@ body.dark-theme{
 
   .modal__body-detail{
     grid-template-columns: 326px;
-    min-width: 276px;
+    min-width: 326px;
   }
 
   .wrapper{

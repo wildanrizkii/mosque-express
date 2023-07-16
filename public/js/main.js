@@ -119,7 +119,6 @@ const deactive_tab = document.querySelector('.tab__btn:last-child');
 const all_content = document.querySelectorAll('.content__container');
 const active_content = document.querySelector('.content__container:first-child');
 const deactive_content = document.querySelector('.content__container:last-child');
-console.log(all_content)
 
 function openModal(target) {
     document.getElementById(target).style.display = "flex";
