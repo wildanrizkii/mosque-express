@@ -1423,17 +1423,19 @@ body.dark-theme{
   justify-content: center;
   align-items: center;
   height: 480px;
-  max-height: 540px;
-  width: 100%;
+  max-height: 480px;
+  max-width: 100%;
   min-width: 220px;
   background-color: lightgrey;
   border-radius: 10px;
   box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);
+  overflow: hidden;
 }
 
-.img__wrapper svg{
-  height: 2.5rem;
-  fill: #fff;
+.img__wrapper img{
+  width: 100%;
+  object-fit: fill;
+  height: inherit;
 }
 
 .notif__kosong{
@@ -1452,7 +1454,7 @@ body.dark-theme{
   max-height: 540px;
   display: flex;
   flex-direction: column;
-  background: var(--container-color);
+  background: white;
   box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);
   border-radius: 10px;
   overflow: hidden;
@@ -1465,11 +1467,12 @@ body.dark-theme{
   align-items: center;
   font-size: 18px;
   position: relative;
+  /* border-bottom: solid 2px; */
 }
 
 .tab__box .tab__btn{
   font-size: 18px;
-  color: var(--text-color);
+  color: black;
   background: none;
   border: none;
   cursor: pointer;
@@ -1500,6 +1503,7 @@ body.dark-theme{
 
 .kegiatan__content .content__container h2{
   margin-bottom: 10px;
+  color: black;
 }
 
 .line{
