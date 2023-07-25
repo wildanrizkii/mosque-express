@@ -113,6 +113,7 @@ sr.reveal(`.popular__card`, {interval: 100})
 const license = document.querySelectorAll(".license");
 const selengkapnya = document.querySelectorAll(".selengkapnya");
 const closeBtn = document.querySelectorAll(".close");
+const closeBtnPopup = document.querySelectorAll(".closeLicense");
 const tabs = document.querySelectorAll('.tab__btn');
 const active_tab = document.querySelector('.tab__btn:first-child');
 const deactive_tab = document.querySelector('.tab__btn:last-child');
@@ -170,6 +171,13 @@ closeBtn.forEach(function(button) {
             all_content[i+1].classList.remove('active');
         }
 
+        closeModal(target);
+    });
+});
+
+closeBtnPopup.forEach(function(button) {
+    button.addEventListener("click", function() {
+        var target = button.getAttribute("data-target");
         closeModal(target);
     });
 });
