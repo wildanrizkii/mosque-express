@@ -11,5 +11,7 @@
       "src": "/(.*)",
       "dest": "index.js"
     }
-  ]
+  ],
+  "source": "/feedback/:id",
+  "destination": "/api/feedback/:id"
 }
