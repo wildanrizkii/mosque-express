@@ -20,6 +20,6 @@
   "type": "module",
   "devDependencies": {
     "@vercel/node": "^2.15.3",
-    "nodemon": "^2.0.22"
+    "nodemon": "^3.0.1"
   }
 }
